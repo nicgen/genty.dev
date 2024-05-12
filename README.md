@@ -1,2 +1,3 @@
 # genty.dev
-dev portfolio
+
+my personnal website
