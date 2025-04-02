@@ -1,48 +1,37 @@
 {
-	"name": "Kelly Bowlin",
-	"profession": "Web Designer",
+	"name": "Nicolas Genty",
+	"profession": "Full-Stack Developer",
+	"bio": "With more than 19 years of experience in the in the web industry, I'm currently at the Zone01 Normandie school to strengthen my skills in full stack development. My background, expertise in UI/UX, enables me to bring enables me to bring added value to to development projects. Passionate about technology and agile and agile project management, I have experience in several startups. within several startups.",
 	"links": [
 		{
-			"url": "#",
-			"icon": "link",
-			"title": "Personal Portfolio",
-			"description": "All my latest design projects"
+			"url": "https://www.linkedin.com/in/ngenty/",
+			"icon": "linkedin-line",
+			"title": "Linkedin",
+			"description": "Join me on Lnkedin"
 		},
 		{
-			"url": "#",
-			"icon": "youtube-fill",
-			"title": "Youtube Channel",
-			"description": "All my latest design projects"
+			"url": "https://github.com/nicgen",
+			"icon": "github-line",
+			"title": "Github",
+			"description": "My last projects on GitHub"
 		},
 		{
-			"url": "#",
-			"icon": "shopping-bag-line",
-			"title": "Template Store",
-			"description": "Discover templates that suit you"
+			"url": "mailto:sdsd@sdsd.fr?subject=Hey,%20Nicolas",
+			"icon": "mail-line",
+			"title": "Email me",
+			"description": "Let's discuss by enail"
 		},
 		{
-			"url": "#",
-			"icon": "link",
-			"title": "Design Podcast",
-			"description": "Every Friday a new episode"
+			"url": "https://mastodon.social/@nicgen",
+			"icon": "mastodon-line",
+			"title": "Mastodon",
+			"description": "Let's discuss on mastodon"
 		},
 		{
-			"url": "#",
-			"icon": "instagram-line",
-			"title": "Instagram Profile",
-			"description": "Designer lifestyle and more"
-		},
-		{
-			"url": "#",
+			"url": "https://dribbble.com/nicgen",
 			"icon": "dribbble-line",
 			"title": "Dribbble Shots",
-			"description": "Know more about my work"
-		},
-		{
-			"url": "#",
-			"icon": "link",
-			"title": "Free Resources",
-			"description": "Collection of free resources"
+			"description": "Know more about my previous work"
 		}
 	]
 }
