@@ -19,19 +19,13 @@
 			"url": "mailto:sdsd@sdsd.fr?subject=Hey,%20Nicolas",
 			"icon": "mail-line",
 			"title": "Email me",
-			"description": "Let's discuss by enail"
+			"description": "Let's discuss by email"
 		},
 		{
 			"url": "https://mastodon.social/@nicgen",
 			"icon": "mastodon-line",
 			"title": "Mastodon",
 			"description": "Let's discuss on mastodon"
-		},
-		{
-			"url": "https://dribbble.com/nicgen",
-			"icon": "dribbble-line",
-			"title": "Dribbble Shots",
-			"description": "Know more about my previous work"
 		}
 	]
 }
