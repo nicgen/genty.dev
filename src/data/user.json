@@ -1,7 +1,7 @@
 {
 	"name": "Nicolas Genty",
 	"profession": "Full-Stack Developer",
-	"bio": "With more than 19 years of experience in the in the web industry, I'm currently at the Zone01 Normandie school to strengthen my skills in full stack development. My background, expertise in UI/UX, enables me to bring enables me to bring added value to to development projects. Passionate about technology and agile and agile project management, I have experience in several startups. within several startups.",
+	"bio": "With more than 19 years of experience in the web industry, I'm currently at the Zone01 Normandy school to strengthen my skills in full stack development. My background and expertise in UI/UX enable me to bring added value to development projects. Passionate about technology and agile project management, I have experience within several startups.",
 	"links": [
 		{
 			"url": "https://www.linkedin.com/in/ngenty/",
@@ -16,7 +16,7 @@
 			"description": "My last projects on GitHub"
 		},
 		{
-			"url": "mailto:sdsd@sdsd.fr?subject=Hey,%20Nicolas",
+			"url": "mailto:website_67EEB9A7@genty.dev?subject=Hey,%20Nicolas",
 			"icon": "mail-line",
 			"title": "Email me",
 			"description": "Let's discuss by email"
