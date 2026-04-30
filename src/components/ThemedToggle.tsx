@@ -32,7 +32,7 @@ const ThemedToggle: React.FC = () => {
   return (
     <button 
       onClick={toggleTheme}
-      className="material-symbols-outlined hover:text-primary transition-colors p-2"
+      className="material-symbols-outlined w-5 h-5 hover:text-primary transition-colors p-2"
       aria-label="Toggle theme"
     >
       {theme === 'light' ? 'dark_mode' : 'light_mode'}
