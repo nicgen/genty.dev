@@ -2,18 +2,18 @@
 
 A high-performance, minimalist, and brutalist portfolio built with **Astro 5** and **React**. Designed for speed, aesthetics, and ease of content management.
 
-## ✨ Features
+## Features
 
-- **🚀 Astro 5 + React**: Hybrid architecture combining static performance with dynamic interactivity.
-- **🎨 Design Tokens**: Centralized design system in `tokens.css` with a dual-color strategy:
+- **Astro 5 + React**: Hybrid architecture combining static performance with dynamic interactivity.
+- **Design Tokens**: Centralized design system in `tokens.css` with a dual-color strategy:
   - **Light Mode**: Vibrant Red (`#eb0202`)
   - **Dark Mode**: Vibrant Green (`#bcfd49`)
-- **📦 Content Collections**: Type-safe data management for projects and profile info.
-- **🎭 Motion**: Smooth gallery transitions and micro-animations using **Framer Motion**.
-- **🌗 Smart Theme**: Persistent dark/light mode with FOUC (Flash of Unstyled Content) prevention.
-- **🖼️ Optimized Assets**: CSS masks for theme-aware social icons and local image optimization.
+- **Content Collections**: Type-safe data management for projects and profile info.
+- **Motion**: Smooth gallery transitions and micro-animations using **Framer Motion**.
+- **Smart Theme**: Persistent dark/light mode with FOUC (Flash of Unstyled Content) prevention.
+- **Optimized Assets**: CSS masks for theme-aware social icons and local image optimization.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: [Astro](https://astro.build/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
@@ -21,7 +21,7 @@ A high-performance, minimalist, and brutalist portfolio built with **Astro 5** a
 - **Icons**: [Simple Icons](https://simpleicons.org/) via CSS masks
 - **Typography**: Outfit & IBM Plex Mono
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 src/
@@ -33,7 +33,7 @@ src/
 └── styles/         # Design tokens & global CSS
 ```
 
-## 🧞 Commands
+## Commands
 
 | Command | Action |
 | :--- | :--- |
@@ -42,7 +42,7 @@ src/
 | `pnpm build` | Build for production |
 | `pnpm preview` | Preview production build |
 
-## 📝 Content Management
+## Content Management
 
 The site is data-driven. To update content:
 
