@@ -2,13 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface GalleryProps {
-  images: string[];
+  images: (string | { src: string })[];
   title: string;
   theme?: string;
 }
 
 const Gallery: React.FC<GalleryProps> = ({ images, title, theme = 'dark' }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const getImageUrl = (img: string | { src: string }) => {
+    return typeof img === 'string' ? img : img.src;
+  };
 
   useEffect(() => {
     if (images.length <= 1) return;
@@ -28,7 +32,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, title, theme = 'dark' }) => {
         <AnimatePresence initial={false} mode="popLayout">
           <motion.img
             key={currentImageIndex}
-            src={images[currentImageIndex]}
+            src={getImageUrl(images[currentImageIndex])}
             alt={title}
             className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             initial={{ x: '100%' }}

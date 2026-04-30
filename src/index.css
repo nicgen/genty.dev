@@ -8,9 +8,25 @@ body {
   background-color: var(--surface);
   color: var(--on-surface);
   transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6 {
+main {
+  flex-grow: 1;
+}
+
+footer {
+  padding: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Outfit', sans-serif !important;
 }
 
@@ -32,12 +48,15 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--surface);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--outline-variant);
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
 }
@@ -48,7 +67,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Global Transitions */
-a, button {
+a,
+button {
   transition: all 0.2s ease-in-out;
 }
 

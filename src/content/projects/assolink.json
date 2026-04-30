@@ -33,7 +33,7 @@
     }
   ],
   "images": [
-    "/assets/projects/assolink/thumbnail.jpg"
+    "../../assets/projects/assolink/thumbnail.jpg"
   ],
   "links": [
     {
