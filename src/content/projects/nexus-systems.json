@@ -1,0 +1,20 @@
+{
+  "id": "nexus-systems",
+  "title": "Nexus_Systems",
+  "description": "A generative identity system for decentralized data networks. Exploring the intersection of brutalist architecture and real-time algorithmic visualization. Built using WebGL and custom shader protocols.",
+  "tech": [
+    { "name": "WebGL", "icon": "opengl" },
+    { "name": "React", "icon": "react" },
+    { "name": "Rust", "icon": "rust" }
+  ],
+  "images": [
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuBP7QGtu7uUaWR7m9nvU_syOBgeL2GGguQDYeR6qSRTAwY5dUir5qP2_iLwnf5cD1jttWInmfnf5V4W8u22DAzK2aAzPdl0mBeFgFHRC7BLILq3j8CzIO60IqYZPzbmYpL7F7j0p5-bLdclh7EMYeqYZKhf-4hHmt9R-JHJz6MS1CVPU_WgURw0sYIKnfTVdynfW7OpidxHHM7nBKQ4wbk1KAfGXt6MvoDZ1kWKPf-ey0ONry3Zj5-w7qKU9vm8_nGKkttlqJn36GQ",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuA_MnLI7fnrDUr-HBbsHALXuRBIJfx6txnBgmVRmBD6gBIbccjYRrHZpuamp1KhVP0IuarAsqvifPC6t7IeGKpWNntVJ4IxnBOTXuinh_85OhFRS99jVr_SJusWUZl_kJ3rImLj5ul5CK_hiJwoLBM2VkALftHBddKOhX8PU10QI_1yz93n34B6GPNutY9PuP93-Tg47OE7_V-e3LD3E4yy45PaM3BApbLgiKuR5TH4sNF88aVkh4Ex5WInd7gIntUkMzqai9PT6dQ"
+  ],
+  "links": [
+    { "type": "site", "url": "https://example.com", "icon": "world" },
+    { "type": "github", "url": "https://github.com/nicgen/nexus-systems", "icon": "github" }
+  ],
+  "category": "design & dev",
+  "status": "completed"
+}

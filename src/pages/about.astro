@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getEntry } from 'astro:content';
+
+const profile = await getEntry('user', 'profile');
+const { name, profession, bio, socials } = profile.data;
+
+const getIconUrl = (socialName: string) => {
+  const slug = socialName.toLowerCase().replace(' ', '');
+  if (slug === 'linkedin') return '/logo_linkedIn.svg';
+  const baseSlug = slug === 'email' ? 'gmail' : slug;
+  return `https://cdn.simpleicons.org/${baseSlug}/white`;
+};
+---
+
+<Layout title="About | Nicolas Genty">
+  <Header />
+  
+  <main class="pt-32">
+    <section id="about" class="max-w-[1440px] mx-auto px-8 flex flex-col items-center text-center pt-24 pb-24">
+      <div class="relative mb-12">
+        <div class="w-40 h-40 rounded-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 border border-outline-variant">
+          <img 
+            alt={name} 
+            class="w-full h-full object-cover scale-110" 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAEwQhTiY7yr8xmxGcG9V_-k0RtDBcch8dSqXDGV8HfutCz8vmApf7MSKkxQlXKIDD-CxhLYCq4S67je70BPmrSNFH7H2TM_kOep3L7JeeXT15E8VctTFT5y6Jp0-ud1HyJShxTPFnmEIxFm_VsTSHZD-glg1PhR-UZK2IWwWbtoEILVeSJ8PyjzFc6d1kMXqlExYaAh-8D7Nf3tC_RGlwNTt1hX6nDGgZ3v8IO8kso6i_mbnZyDPmsUsBImn20mftzRhUyxO5bx0" 
+          />
+        </div>
+      </div>
+      <h1 class="text-6xl md:text-8xl font-bold tracking-tighter uppercase mb-6 font-headline leading-none">
+        {name.toUpperCase()}
+      </h1>
+      <p class="font-mono text-sm tracking-widest uppercase opacity-60 mb-12 max-w-2xl leading-relaxed">
+        {profession} / {bio}
+      </p>
+      
+      <div class="flex flex-col gap-4 w-full max-w-xs">
+        {socials.map((social) => (
+          <a 
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center justify-between py-4 px-6 bg-surface-container-low hover:bg-primary transition-all duration-300 border border-outline-variant hover:border-primary rounded-tag"
+          >
+            <span class="font-mono text-sm tracking-widest uppercase group-hover:text-on-primary flex items-center gap-3">
+              <div 
+                class="w-5 h-5 bg-on-surface group-hover:bg-on-primary icon-mask transition-colors" 
+                style={`-webkit-mask-image: url(${getIconUrl(social.name)}); mask-image: url(${getIconUrl(social.name)});`}
+              />
+              {social.name}
+            </span>
+            <span class="material-symbols-outlined text-sm group-hover:text-on-primary">arrow_outward</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

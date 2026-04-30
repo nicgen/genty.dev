@@ -1,0 +1,32 @@
+---
+import { getEntry } from 'astro:content';
+
+const profile = await getEntry('user', 'profile');
+const { name, socials } = profile.data;
+---
+
+<footer class="w-full bg-surface-container-lowest pt-16 pb-8 border-t border-outline-variant">
+  <div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-[1440px] mx-auto gap-4">
+    <div class="text-sm font-bold font-mono">
+      © {new Date().getFullYear()} {name.toUpperCase()}
+    </div>
+    <div class="flex items-center gap-8 font-mono text-[0.6875rem] tracking-widest uppercase">
+      {socials.slice(0, 2).map(social => (
+        <a 
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="opacity-60 hover:opacity-100 hover:text-primary transition-all"
+        >
+          {social.name}
+        </a>
+      ))}
+      <a 
+        href="#" 
+        class="underline underline-offset-4 text-primary"
+      >
+        Source
+      </a>
+    </div>
+  </div>
+</footer>

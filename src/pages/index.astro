@@ -1,60 +1,79 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Profile from "../components/Profile.astro";
-import List from "../components/List.astro";
-import Shadow from "../components/Shadow.astro";
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const completedProjects = projects.filter(p => p.data.status === 'completed');
+const wipProjects = projects.filter(p => p.data.status === 'wip');
+
+const categories = [...new Set(completedProjects.map(p => p.data.category))];
 ---
 
-<Layout title="Welcome to Astro.">
-    <main class="container" id="container" style="overflow: hidden;">
-        <Profile></Profile>
-        <List></List>
-        <Shadow></Shadow>
-    </main>
+<Layout title="Works | Nicolas Genty">
+	<Header />
+	
+	<main class="pt-32">
+		<div class="max-w-[1440px] mx-auto px-8 pb-32">
+			{categories.map((category) => (
+				<section class="mb-32">
+					<header class="mb-24 border-b border-outline-variant pb-4">
+						<h2 class="font-mono text-[0.6875rem] tracking-widest uppercase opacity-40">
+							({category})
+						</h2>
+					</header>
+					
+					<div class="space-y-32">
+						{completedProjects
+							.filter(p => p.data.category === category)
+							.map(project => (
+								<ProjectCard project={project} />
+							))
+						}
+					</div>
+				</section>
+			))}
+
+			{wipProjects.length > 0 && (
+				<section class="mt-48">
+					<header class="mb-16 border-b border-outline-variant pb-4">
+						<h2 class="font-mono text-[0.6875rem] tracking-widest uppercase opacity-40">
+							(work in progress)
+						</h2>
+					</header>
+					
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+						{wipProjects.map(project => (
+							<div class="group border border-outline-variant p-6 hover:bg-surface-container-low transition-colors duration-300 rounded-tag">
+								<div class="aspect-video bg-surface-container mb-6 overflow-hidden border border-outline-variant/30 rounded-sm">
+									<img 
+										src={project.data.images[0]} 
+										alt={project.data.title}
+										class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+									/>
+								</div>
+								<h3 class="text-xl font-bold uppercase mb-3 font-headline group-hover:text-primary transition-colors">
+									{project.data.title}
+								</h3>
+								<p class="font-mono text-sm opacity-60 leading-relaxed">
+									{project.data.description}
+								</p>
+								<div class="mt-6 flex flex-wrap gap-2">
+									{project.data.tech.slice(0, 3).map(t => (
+										<span class="text-[10px] font-mono uppercase bg-outline-variant text-on-surface px-2 py-1 rounded-tag">
+											#{t.name}
+										</span>
+									))}
+								</div>
+							</div>
+						))}
+					</div>
+				</section>
+			)}
+		</div>
+	</main>
+
+	<Footer />
 </Layout>
-
-<style>
-	.container {
-        position: relative;
-        margin: auto;
-        padding: 0.3125rem;
-        max-width: 600px;
-        width: 90%;
-        height: 100vh;
-        overflow: hidden;
-        scrollbar-width: 8px;
-        scrollbar-color: var(--zinc-900) var(--zinc-950)
-    }
-</style>
-
-<script>
-    (() => {
-        // show or hide shadow, works only if content leaves viewport
-        const mainContent = document.getElementById('container');
-        const shadow = document.getElementById('shadow');
-        const shadowButton = document.getElementById('shadow-button');
-
-        shadowButton.addEventListener('click', () => {
-            if (shadow.style.position === 'absolute') {
-                shadow.style.position = 'relative';
-                mainContent.style.overflow = 'auto';
-                shadowButton.children[0].textContent = 'Show Less';
-            
-            }  else {
-                shadow.style.position = 'absolute';
-                mainContent.style.overflow = 'hidden';
-                mainContent.scroll(0,0);
-                shadowButton.children[0].textContent = 'Explore More';
-            }
-        });
-
-        // Hide the shadow if the content is minimal enough to leave the viewport
-        const list = document.getElementById('list');
-        const observerList = list.getBoundingClientRect();
-
-        if (observerList.bottom < window.innerHeight) {
-            shadow.style.display = 'none';
-            mainContent.style.overflow = 'auto';
-        }
-    })();
-</script>

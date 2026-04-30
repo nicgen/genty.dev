@@ -1,0 +1,63 @@
+@import "./styles/tokens.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--surface);
+  color: var(--on-surface);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif !important;
+}
+
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Borders */
+.border-custom {
+  border-color: var(--outline-variant);
+}
+
+/* Global Transitions */
+a, button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Icon Mask for theme-aware icons */
+.icon-mask {
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}

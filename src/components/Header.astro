@@ -1,0 +1,37 @@
+---
+import ThemeToggle from './ThemeToggle.tsx';
+import { ThemeProvider } from '../context/ThemeContext.tsx';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="w-full top-0 left-0 fixed z-50 bg-surface/80 backdrop-blur-md">
+  <div class="flex justify-between items-center w-full px-8 py-6 max-w-[1440px] mx-auto">
+    <a href="/" class="flex flex-col md:flex-row md:items-baseline md:gap-3 group">
+      <span class="text-xl font-bold tracking-tighter uppercase font-headline group-hover:text-primary transition-colors">
+        Nicolas GENTY
+      </span>
+      <span class="text-[0.625rem] font-mono uppercase tracking-widest opacity-40 group-hover:opacity-100 transition-opacity">
+        Web Designer / Full-Stack Developer
+      </span>
+    </a>
+    <nav class="flex items-center gap-8">
+      <a 
+        href="/" 
+        class={`font-mono uppercase tracking-[0.1em] text-[0.875rem] transition-colors duration-200 ${currentPath === '/' ? 'text-primary font-bold' : 'hover:text-primary'}`}
+      >
+        Works
+      </a>
+      <a 
+        href="/about" 
+        class={`font-mono uppercase tracking-[0.1em] text-[0.875rem] transition-colors duration-200 ${currentPath === '/about' ? 'text-primary font-bold' : 'hover:text-primary'}`}
+      >
+        About
+      </a>
+      
+      <ThemeProvider client:load>
+        <ThemeToggle client:load />
+      </ThemeProvider>
+    </nav>
+  </div>
+</header>

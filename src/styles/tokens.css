@@ -1,0 +1,36 @@
+:root {
+  /* Colors */
+  --primary: #eb0202; /* Vibrant Red for Light Mode */
+  --on-primary: #FFFFFF;
+  
+  --surface: #FFFFFF;
+  --on-surface: #131313;
+  
+  --surface-container-lowest: #FFFFFF;
+  --surface-container-low: #F8F8FF;
+  --surface-container: #F1F1F1;
+  --surface-container-high: #EBEBEB;
+  --surface-container-highest: #E2E2E2;
+  
+  --outline-variant: rgb(231, 231, 231);
+
+  /* Spacing */
+  --header-height: 80px;
+  --border-radius-tag: 0.75rem;
+}
+
+.dark {
+  --primary: #bcfd49; /* Vibrant Acid Green for Dark Mode */
+  --on-primary: #131313;
+  
+  --surface: #131313;
+  --on-surface: #E2E2E2;
+  
+  --surface-container-lowest: #131313;
+  --surface-container-low: #1A1A1A;
+  --surface-container: #242424;
+  --surface-container-high: #2D2D2D;
+  --surface-container-highest: #363636;
+  
+  --outline-variant: #2c2c2c;
+}
