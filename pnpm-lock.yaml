@@ -14,6 +14,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^6.0.2
         version: 6.0.2(astro@5.18.1(@types/node@25.6.0)(jiti@1.21.7)(lightningcss@1.32.0)(rollup@4.60.2)(terser@5.46.1)(typescript@5.8.2)(yaml@2.8.3))(tailwindcss@3.4.19(yaml@2.8.3))
+      '@fontsource-variable/material-symbols-outlined':
+        specifier: ^5.2.43
+        version: 5.2.43
       '@fontsource/ibm-plex-mono':
         specifier: ^5.2.7
         version: 5.2.7
@@ -519,6 +522,9 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource-variable/material-symbols-outlined@5.2.43':
+    resolution: {integrity: sha512-daKLQrkSOjxPQZOmJX4OZ3mEOOH5T6q7/lF/Xoa5F4DqAYdEweNgFqHGTYf4EhiwumQp3mNUeJfJsR7paW/MRA==}
 
   '@fontsource/ibm-plex-mono@5.2.7':
     resolution: {integrity: sha512-MKAb8qV+CaiMQn2B0dIi1OV3565NYzp3WN5b4oT6LTkk+F0jR6j0ZN+5BKJiIhffDC3rtBULsYZE65+0018z9w==}
@@ -2942,6 +2948,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.27.7':
     optional: true
+
+  '@fontsource-variable/material-symbols-outlined@5.2.43': {}
 
   '@fontsource/ibm-plex-mono@5.2.7': {}
 
