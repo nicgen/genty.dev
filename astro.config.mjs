@@ -10,7 +10,4 @@ export default defineConfig({
     }),
     react()
   ],
-  image: {
-    remotePatterns: [{ protocol: 'https', hostname: 'lh3.googleusercontent.com' }],
-  },
 });
