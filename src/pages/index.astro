@@ -11,6 +11,8 @@ const completedProjects = projects.filter(p => p.data.status === 'completed');
 const wipProjects = projects.filter(p => p.data.status === 'wip');
 
 const categories = [...new Set(completedProjects.map(p => p.data.category))];
+
+const getIconSlug = (name: string) => name.toLowerCase().replace(' ', '');
 ---
 
 <Layout title="Works | Nicolas Genty">
@@ -47,7 +49,7 @@ const categories = [...new Set(completedProjects.map(p => p.data.category))];
 					
 					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
 						{wipProjects.map(project => (
-							<div class="group border border-outline-variant p-6 hover:bg-surface-container-low transition-colors duration-300 rounded-tag">
+							<div class="group border border-outline-variant p-6 hover:bg-surface-container-low transition-colors duration-300 rounded-tag flex flex-col h-full">
 								<div class="aspect-video bg-surface-container mb-6 overflow-hidden border border-outline-variant/30 rounded-sm">
 									<Image 
 										src={project.data.images[0]} 
@@ -62,13 +64,17 @@ const categories = [...new Set(completedProjects.map(p => p.data.category))];
 								<h3 class="text-xl font-bold uppercase mb-3 font-headline group-hover:text-primary transition-colors">
 									{project.data.title}
 								</h3>
-								<p class="font-mono text-sm opacity-60 leading-relaxed">
+								<p class="font-mono text-sm opacity-60 leading-relaxed flex-grow">
 									{project.data.description}
 								</p>
-								<div class="mt-6 flex flex-wrap gap-2">
-									{project.data.tech.slice(0, 3).map(t => (
-										<span class="text-[10px] font-mono uppercase bg-outline-variant text-on-surface px-2 py-1 rounded-tag">
-											#{t.name}
+								<div class="mt-8 flex flex-wrap gap-2">
+									{project.data.tech.map(t => (
+										<span class="text-[10px] font-mono uppercase bg-outline-variant text-on-surface px-2 py-1 rounded-tag flex items-center gap-2">
+											<div 
+												class="w-3 h-3 bg-primary icon-mask" 
+												style={`-webkit-mask-image: url(https://cdn.simpleicons.org/${getIconSlug(t.icon)}/white); mask-image: url(https://cdn.simpleicons.org/${getIconSlug(t.icon)}/white);`}
+											/>
+											{t.name}
 										</span>
 									))}
 								</div>
