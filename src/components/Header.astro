@@ -1,6 +1,5 @@
 ---
-import ThemeToggle from './ThemeToggle.tsx';
-import { ThemeProvider } from '../context/ThemeContext.tsx';
+import ThemedToggle from './ThemedToggle.tsx';
 
 const currentPath = Astro.url.pathname;
 ---
@@ -29,9 +28,7 @@ const currentPath = Astro.url.pathname;
         About
       </a>
       
-      <ThemeProvider client:load>
-        <ThemeToggle client:load />
-      </ThemeProvider>
+      <ThemedToggle client:only="react" />
     </nav>
   </div>
 </header>
