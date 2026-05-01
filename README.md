@@ -18,8 +18,8 @@ A high-performance, minimalist, and brutalist portfolio built with **Astro 5** a
 - **Framework**: [Astro](https://astro.build/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Interactions**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Simple Icons](https://simpleicons.org/) via CSS masks
-- **Typography**: Outfit & IBM Plex Mono
+- **Icons**: Self-hosted SVGs in `public/icons/` (Simple Icons + custom) used via CSS masks.
+- **Typography**: Outfit & IBM Plex Mono (Self-hosted via @fontsource).
 
 ## Project Structure
 
@@ -48,7 +48,9 @@ The site is data-driven. To update content:
 
 - **Projects**: Edit or add JSON files in `src/content/projects/`.
 - **Profile**: Edit `src/content/user/profile.json`.
-- **Images**: Place project images in `public/assets/projects/` and reference them in the JSON files.
+- **Images**: Place project images in `src/assets/projects/` and reference them in JSON files (e.g., `../../assets/projects/image.webp`).
+- **Icons**: Add new technology icons to `public/icons/` if missing.
+
 
 ---
 Built by [Nicolas Genty](https://github.com/nicgen)
