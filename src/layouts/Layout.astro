@@ -1,7 +1,6 @@
 ---
 import '@fontsource/outfit';
 import '@fontsource/ibm-plex-mono';
-import '@fontsource-variable/material-symbols-outlined';
 import '../index.css';
 import { getEntry } from 'astro:content';
 import profileImage from '../assets/profil.jpg';
@@ -51,14 +50,31 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
     <meta name="twitter:image" content={ogImageUrl} />
 
     <script is:inline>
-      const theme = (() => {
+      const getTheme = () => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
           return localStorage.getItem('theme');
         }
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      })();
-      if (theme === 'dark') document.documentElement.classList.add('dark');
-      window.localStorage.setItem('theme', theme);
+      };
+
+      const setTheme = (theme) => {
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      };
+
+      setTheme(getTheme());
+
+      // Listen for system changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          const newTheme = e.matches ? 'dark' : 'light';
+          setTheme(newTheme);
+          window.dispatchEvent(new CustomEvent('theme-changed', { detail: { theme: newTheme } }));
+        }
+      });
     </script>
   </head>
   <body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary transition-colors duration-300">

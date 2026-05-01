@@ -3,21 +3,33 @@
 
 <button
   id="theme-toggle"
-  class="material-symbols-outlined hover:text-primary transition-colors p-2"
+  class="group transition-colors p-2"
   aria-label="Toggle theme"
 >
-  light_mode
+  <div 
+    id="theme-toggle-icon"
+    class="w-5 h-5 bg-on-surface group-hover:bg-primary icon-mask transition-all duration-300"
+  />
 </button>
 
 <script>
   const btn = document.getElementById('theme-toggle');
-  if (!btn) throw new Error('Theme toggle button not found');
+  const icon = document.getElementById('theme-toggle-icon');
+  if (!btn || !icon) throw new Error('Theme toggle elements not found');
 
   const updateIcon = () => {
-    btn.textContent = document.documentElement.classList.contains('dark') ? 'light_mode' : 'dark_mode';
+    const isDark = document.documentElement.classList.contains('dark');
+    const iconUrl = `/icons/${isDark ? 'sun' : 'moon'}.svg`;
+    icon.style.webkitMaskImage = `url(${iconUrl})`;
+    icon.style.maskImage = `url(${iconUrl})`;
   };
 
   updateIcon();
+
+  // Listen for system theme changes from Layout.astro
+  window.addEventListener('theme-changed', () => {
+    updateIcon();
+  });
 
   btn.addEventListener('click', () => {
     const isDark = document.documentElement.classList.toggle('dark');
