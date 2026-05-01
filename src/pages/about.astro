@@ -53,7 +53,10 @@ const getIconUrl = (socialName: string) => `/icons/${socialName.toLowerCase().re
               />
               {social.name}
             </span>
-            <span class="material-symbols-outlined w-5 h-5 group-hover:text-on-primary">arrow_outward</span>
+            <div 
+              class="w-5 h-5 bg-on-surface group-hover:bg-on-primary icon-mask transition-colors" 
+              style="-webkit-mask-image: url(/icons/arrow-up-right.svg); mask-image: url(/icons/arrow-up-right.svg);"
+            />
           </a>
         ))}
       </div>
