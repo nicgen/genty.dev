@@ -1,5 +1,5 @@
 ---
-import ThemedToggle from './ThemedToggle.tsx';
+import ThemedToggle from './ThemedToggle.astro';
 
 const currentPath = Astro.url.pathname;
 ---
@@ -28,7 +28,7 @@ const currentPath = Astro.url.pathname;
         About
       </a>
       
-      <ThemedToggle client:only="react" />
+      <ThemedToggle />
     </nav>
   </div>
 </header>

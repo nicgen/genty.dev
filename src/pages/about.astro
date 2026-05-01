@@ -9,10 +9,7 @@ import profileImage from '../assets/profil.jpg';
 const profile = await getEntry('user', 'profile');
 const { name, profession, bio, socials } = profile.data;
 
-const getIconUrl = (socialName: string) => {
-  const slug = socialName.toLowerCase().replace(' ', '');
-  return `/icons/${slug}.svg`;
-};
+const getIconUrl = (socialName: string) => `/icons/${socialName.toLowerCase().replace(/\s+/g, '')}.svg`;
 ---
 
 <Layout title="About | Nicolas Genty">
@@ -25,6 +22,7 @@ const getIconUrl = (socialName: string) => {
           <Image 
             src={profileImage} 
             alt={name} 
+            loading="eager"
             width={400} 
             height={400} 
             quality={85}

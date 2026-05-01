@@ -3,53 +3,71 @@ import '@fontsource/outfit';
 import '@fontsource/ibm-plex-mono';
 import '@fontsource-variable/material-symbols-outlined';
 import '../index.css';
+import { getEntry } from 'astro:content';
+import profileImage from '../assets/profil.jpg';
 
 interface Props {
-	title: string;
-	description?: string;
+  title: string;
+  description?: string;
+  ogImage?: string;
 }
 
-const { title, description = "Nicolas Genty - Portfolio" } = Astro.props;
+const profile = await getEntry('user', 'profile');
+const siteUrl = 'https://genty.dev';
+
+const {
+  title,
+  description = `${profile.data.name} — ${profile.data.profession}. ${profile.data.bio}`,
+  ogImage = profileImage.src,
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
 
+    <title>{title}</title>
+    <meta name="description" content={description} />
 
-		{/* Theme Script to prevent FOUC */}
-		<script is:inline>
-			const theme = (() => {
-				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-					return localStorage.getItem('theme');
-				}
-				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-					return 'dark';
-				}
-				return 'light';
-			})();
-		
-			if (theme === 'light') {
-				document.documentElement.classList.remove('dark');
-			} else {
-				document.documentElement.classList.add('dark');
-			}
-			window.localStorage.setItem('theme', theme);
-		</script>
-	</head>
-	<body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary transition-colors duration-300">
-		<slot />
-	</body>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content={profile.data.name} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      })();
+      if (theme === 'dark') document.documentElement.classList.add('dark');
+      window.localStorage.setItem('theme', theme);
+    </script>
+  </head>
+  <body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary transition-colors duration-300">
+    <slot />
+  </body>
 </html>
 
 <style is:global>
-	:root {
-		--header-height: 80px;
-	}
+  :root {
+    --header-height: 80px;
+  }
 </style>

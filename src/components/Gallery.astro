@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  images: ImageMetadata[];
+  title: string;
+}
+
+const { images, title } = Astro.props;
+const count = images.length;
+---
+
+<div
+  class="gallery aspect-[16/10] bg-surface-container overflow-hidden relative group border border-outline-variant"
+  data-count={count}
+>
+  <div class="gallery-track flex h-full" style={`width: ${count * 100}%`}>
+    {images.map((img, i) => (
+      <div class="h-full" style={`width: ${100 / count}%`}>
+        <Image
+          src={img}
+          alt={`${title} — screenshot ${i + 1}`}
+          width={1280}
+          height={800}
+          quality={85}
+          format="webp"
+          class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+          loading={i === 0 ? 'eager' : 'lazy'}
+        />
+      </div>
+    ))}
+  </div>
+
+  {count > 1 && (
+    <div class="gallery-dots absolute bottom-8 left-0 right-0 flex justify-center gap-3 z-10">
+      {images.map((_, i) => (
+        <button
+          class="gallery-dot w-2 h-2 rounded-full"
+          data-index={i}
+          aria-label={`Image ${i + 1}`}
+          aria-pressed={i === 0 ? 'true' : 'false'}
+        />
+      ))}
+    </div>
+  )}
+
+  <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+</div>
+
+<style>
+  .gallery-track {
+    transition: transform 0.5s ease-in-out;
+  }
+  .gallery-dot {
+    transition: background-color 0.3s, transform 0.3s;
+    background-color: color-mix(in srgb, var(--on-surface) 20%, transparent);
+  }
+  .gallery-dot[aria-pressed="true"] {
+    background-color: var(--primary);
+    transform: scale(1.25);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.gallery').forEach((gallery) => {
+    const track = gallery.querySelector<HTMLElement>('.gallery-track');
+    const dots = gallery.querySelectorAll<HTMLButtonElement>('.gallery-dot');
+    const count = Number(gallery.dataset.count);
+
+    if (!track || count <= 1) return;
+
+    let current = 0;
+
+    const goTo = (idx: number) => {
+      current = idx;
+      track.style.transform = `translateX(-${idx * (100 / count)}%)`;
+      dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === idx)));
+    };
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+    setInterval(() => goTo((current + 1) % count), 4000);
+  });
+</script>

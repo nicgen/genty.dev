@@ -1,9 +1,9 @@
 ---
-import Gallery from './Gallery.tsx';
+import Gallery from './Gallery.astro';
 
 const { project } = Astro.props;
 
-const getIconSlug = (name: string) => name.toLowerCase().replace(' ', '');
+const getIconSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '');
 ---
 
 <div class="flex flex-col md:flex-row gap-12 items-start mb-48">
@@ -18,29 +18,29 @@ const getIconSlug = (name: string) => name.toLowerCase().replace(' ', '');
       <p class="text-[0.875rem] leading-relaxed opacity-70 font-mono">
         {project.data.description}
       </p>
-      
+
       <div class="flex flex-wrap gap-2 pt-4">
         {project.data.tech.map((t) => (
           <span class="font-mono text-[0.6875rem] px-3 py-1 bg-outline-variant text-on-surface flex items-center gap-2 tracking-widest uppercase rounded-tag">
-            <div 
-              class="w-4 h-4 bg-primary icon-mask" 
+            <div
+              class="w-4 h-4 bg-primary icon-mask"
               style={`-webkit-mask-image: url(/icons/${getIconSlug(t.icon)}.svg); mask-image: url(/icons/${getIconSlug(t.icon)}.svg);`}
             />
             {t.name}
           </span>
         ))}
       </div>
-      
+
       <div class="flex gap-6 pt-8">
         {project.data.links.map((link) => (
-          <a 
-            href={link.url} 
-            target="_blank" 
+          <a
+            href={link.url}
+            target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-3 text-primary font-mono text-xs font-bold tracking-widest uppercase hover:translate-x-2 transition-transform"
           >
-            <div 
-              class="w-4 h-4 bg-primary icon-mask" 
+            <div
+              class="w-4 h-4 bg-primary icon-mask"
               style={`-webkit-mask-image: url(/icons/${link.icon === 'world' ? 'googlechrome' : getIconSlug(link.icon)}.svg); mask-image: url(/icons/${link.icon === 'world' ? 'googlechrome' : getIconSlug(link.icon)}.svg);`}
             />
             {link.type === 'site' ? 'www' : 'github'}
@@ -50,8 +50,8 @@ const getIconSlug = (name: string) => name.toLowerCase().replace(' ', '');
     </div>
   </div>
 
-  {/* Sliding Gallery */}
+  {/* Gallery */}
   <div class="w-full md:w-2/3">
-    <Gallery client:visible images={project.data.images} title={project.data.title} />
+    <Gallery images={project.data.images} title={project.data.title} />
   </div>
 </div>
