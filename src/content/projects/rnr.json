@@ -12,7 +12,7 @@
       "icon": "wordpress"
     },
     {
-      "name": "React Native",
+      "name": "React",
       "icon": "react"
     },
     {
@@ -24,8 +24,8 @@
       "icon": "docker"
     },
     {
-      "name": "API",
-      "icon": ""
+      "name": "server management",
+      "icon": "ovh"
     }
   ],
   "images": [
