@@ -11,9 +11,7 @@ const { name, profession, bio, socials } = profile.data;
 
 const getIconUrl = (socialName: string) => {
   const slug = socialName.toLowerCase().replace(' ', '');
-  if (slug === 'linkedin') return '/logo_linkedIn.svg';
-  const baseSlug = slug === 'email' ? 'gmail' : slug;
-  return `https://cdn.simpleicons.org/${baseSlug}/white`;
+  return `/icons/${slug}.svg`;
 };
 ---
 

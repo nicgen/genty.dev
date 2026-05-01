@@ -5,10 +5,17 @@
   "socials": [
     {
       "name": "GitHub",
+      "icon": "github",
       "url": "https://github.com/nicgen"
     },
     {
       "name": "LinkedIn",
+      "icon": "linkedin",
+      "url": "https://linkedin.com/in/ngenty"
+    },
+    {
+      "name": "Mastodon",
+      "icon": "mastodon",
       "url": "https://linkedin.com/in/ngenty"
     }
   ]

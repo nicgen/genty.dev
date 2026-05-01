@@ -29,6 +29,7 @@ const user = defineCollection({
     bio: z.string(),
     socials: z.array(z.object({
       name: z.string(),
+      icon: z.string(),
       url: z.string(),
     })),
   })

@@ -23,8 +23,8 @@ const getIconSlug = (name: string) => name.toLowerCase().replace(' ', '');
         {project.data.tech.map((t) => (
           <span class="font-mono text-[0.6875rem] px-3 py-1 bg-outline-variant text-on-surface flex items-center gap-2 tracking-widest uppercase rounded-tag">
             <div 
-              class="w-3 h-3 bg-primary icon-mask" 
-              style={`-webkit-mask-image: url(https://cdn.simpleicons.org/${getIconSlug(t.icon)}/white); mask-image: url(https://cdn.simpleicons.org/${getIconSlug(t.icon)}/white);`}
+              class="w-4 h-4 bg-primary icon-mask" 
+              style={`-webkit-mask-image: url(/icons/${getIconSlug(t.icon)}.svg); mask-image: url(/icons/${getIconSlug(t.icon)}.svg);`}
             />
             {t.name}
           </span>
@@ -41,7 +41,7 @@ const getIconSlug = (name: string) => name.toLowerCase().replace(' ', '');
           >
             <div 
               class="w-4 h-4 bg-primary icon-mask" 
-              style={`-webkit-mask-image: url(https://cdn.simpleicons.org/${link.icon === 'world' ? 'googlechrome' : getIconSlug(link.icon)}/white); mask-image: url(https://cdn.simpleicons.org/${link.icon === 'world' ? 'googlechrome' : getIconSlug(link.icon)}/white);`}
+              style={`-webkit-mask-image: url(/icons/${link.icon === 'world' ? 'googlechrome' : getIconSlug(link.icon)}.svg); mask-image: url(/icons/${link.icon === 'world' ? 'googlechrome' : getIconSlug(link.icon)}.svg);`}
             />
             {link.type === 'site' ? 'www' : 'github'}
           </a>
