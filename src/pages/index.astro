@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import WIPProjectCard from '../components/WIPProjectCard.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 
@@ -11,8 +12,6 @@ const completedProjects = projects.filter(p => p.data.status === 'completed');
 const wipProjects = projects.filter(p => p.data.status === 'wip');
 
 const categories = [...new Set(completedProjects.map(p => p.data.category))];
-
-const getIconSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '');
 ---
 
 <Layout title="Works | Nicolas Genty">
@@ -49,36 +48,7 @@ const getIconSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '');
 					
 					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
 						{wipProjects.map(project => (
-							<div class="group border border-outline-variant p-6 hover:bg-surface-container-low transition-colors duration-300 rounded-tag flex flex-col h-full">
-								<div class="aspect-video bg-surface-container mb-6 overflow-hidden border border-outline-variant/30 rounded-sm">
-									<Image 
-										src={project.data.images[0]} 
-										alt={project.data.title}
-										width={800}
-										height={450}
-										quality={85}
-										format="webp"
-										class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
-									/>
-								</div>
-								<h3 class="text-xl font-bold uppercase mb-3 font-headline group-hover:text-primary transition-colors">
-									{project.data.title}
-								</h3>
-								<p class="font-mono text-sm opacity-60 leading-relaxed flex-grow">
-									{project.data.description}
-								</p>
-								<div class="mt-8 flex flex-wrap gap-2">
-									{project.data.tech.map(t => (
-										<span class="text-[10px] font-mono uppercase bg-outline-variant text-on-surface px-2 py-1 rounded-tag flex items-center gap-2">
-											<div 
-												class="w-5 h-5 bg-primary icon-mask" 
-												style={`-webkit-mask-image: url(/icons/${getIconSlug(t.icon)}.svg); mask-image: url(/icons/${getIconSlug(t.icon)}.svg);`}
-											/>
-											{t.name}
-										</span>
-									))}
-								</div>
-							</div>
+							<WIPProjectCard project={project} />
 						))}
 					</div>
 				</section>
