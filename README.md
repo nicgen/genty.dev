@@ -1,37 +1,46 @@
 # Nicolas Genty — Portfolio
 
-Un portfolio haute performance, minimaliste et brutaliste. Propulsé par **Astro 5** avec une architecture orientée données.
+A high-performance, minimalist, and brutalist portfolio. Powered by **Astro 5** with a data-driven architecture.
 
-## 🚀 Fonctionnalités Clés
+## Key Features
 
-- **Architecture Astro 5** : Performance statique maximale.
-- **Système de Thème Avancé** : Transition fluide (View Transitions) avec persistance.
-- **Design System** : Design tokens centralisés (`tokens.css`).
-- **Content-First** : Gestion des contenus via fichiers JSON typés.
-- **Asset Optimization** : Auto-hébergement des polices et icônes.
+- **Astro 5 Architecture**: Maximum static performance.
+- **Advanced Theme System**: Smooth transitions (View Transitions) with persistence.
+- **Design System**: Centralized design tokens (`tokens.css`).
+- **Content-First**: Content management via typed JSON files.
+- **Asset Optimization**: Self-hosted fonts and icons.
 
-## 💻 Commandes
+## Commands
 
-| Commande       | Action                     |
-| :------------- | :------------------------- |
-| `pnpm install` | Installe les dépendances   |
-| `pnpm dev`     | Lance le serveur de dev    |
-| `pnpm lint`    | Vérifie la qualité du code |
-| `pnpm format`  | Formate le projet          |
-| `pnpm build`   | Génère le site statique    |
+| Command        | Action                              |
+| :------------- | :---------------------------------- |
+| `pnpm install` | Install dependencies                |
+| `pnpm dev`     | Start development server            |
+| `pnpm lint`    | Check code quality                  |
+| `pnpm format`  | Format the project                  |
+| `pnpm build`   | Generate static site for production |
 
-## 📁 Structure du Projet
+## Project Structure
 
 ```text
 src/
-├── assets/         # Images optimisées
-├── components/     # Composants Astro
-├── content/        # Données JSON (projets, profil)
-├── layouts/        # Layout et logique de thème
+├── assets/         # Optimized images
+├── components/     # Astro components
+├── content/        # JSON data (projects, profile)
+├── layouts/        # Layout and theme logic
 ├── pages/          # Routes
 └── styles/         # Design tokens
 ```
 
+## Content Management
+
+The site is data-driven. To update content:
+
+- **Projects**: Edit or add JSON files in `src/content/projects/`.
+- **Profile**: Edit `src/content/user/profile.json`.
+- **Images**: Place project images in `src/assets/projects/` and reference them in JSON files (e.g., `../../assets/projects/image.webp`).
+- **Icons**: Add new technology icons to `public/icons/` if missing.
+
 ---
 
-Fait avec ❤️ par [Nicolas Genty](https://github.com/nicgen)
+Built by [Nicolas Genty](https://github.com/nicgen)
