@@ -4,18 +4,23 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  /* background-color: var(--surface); */
+  color: var(--on-surface);
+}
+
+html {
+  container-name: theme;
+}
+
 body {
   font-family: Outfit, sans-serif;
-  background-color: var(--surface);
-  color: var(--on-surface);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  container-name: theme;
 }
+
 
 main {
   flex-grow: 1;
@@ -83,24 +88,21 @@ button {
 }
 
 /* View Transitions */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
 
 ::view-transition-old(root) {
-  z-index: 1;
+  animation-delay: 500ms;
 }
 
 ::view-transition-new(root) {
-  z-index: 999;
+  animation: circle-in 500ms;
 }
 
-.dark::view-transition-old(root) {
-  z-index: 999;
-}
+@keyframes circle-in {
+  from {
+    clip-path: circle(0% at 50% 0%);
+  }
 
-.dark::view-transition-new(root) {
-  z-index: 1;
+  to {
+    clip-path: circle(120% at 50% 0%);
+  }
 }

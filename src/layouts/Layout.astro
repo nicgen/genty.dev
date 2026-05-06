@@ -88,7 +88,10 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
             Math.max(y, window.innerHeight - y)
           );
 
-          const isDark = root.classList.contains('dark');
+          const isDark = root.dataset.theme === 'dark';
+          const pseudoElement = isDark
+            ? '::view-transition-old(root)'
+            : '::view-transition-new(root)';
 
           document.documentElement.animate(
             {
@@ -99,7 +102,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
             {
               duration: 500,
               easing: 'ease-in-out',
-              pseudoElement: isDark ? '::view-transition-old(root)' : '::view-transition-new(root)',
+              pseudoElement,
             }
           );
         });
@@ -117,9 +120,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
       });
     </script>
   </head>
-  <body
-    class="bg-surface text-on-surface transition-colors duration-300 selection:bg-primary selection:text-on-primary"
-  >
+  <body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary">
     <slot />
   </body>
 </html>
