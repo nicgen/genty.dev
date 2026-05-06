@@ -1,56 +1,59 @@
-# Nicolas Genty — Portfolio v2
+# Nicolas Genty — Portfolio
 
-A high-performance, minimalist, and brutalist portfolio built with **Astro 5** and **React**. Designed for speed, aesthetics, and ease of content management.
+Un portfolio haute performance, minimaliste et brutaliste, conçu pour la rapidité et la maintenabilité. Propulsé par **Astro 5** avec une architecture orientée données et une **Quality Gate** rigoureuse.
 
-## Features
+## 🚀 Fonctionnalités Clés
 
-- **Astro 5 + React**: Hybrid architecture combining static performance with dynamic interactivity.
-- **Design Tokens**: Centralized design system in `tokens.css` with a dual-color strategy:
-  - **Light Mode**: Vibrant Red (`#eb0202`)
-  - **Dark Mode**: Vibrant Green (`#bcfd49`)
-- **Content Collections**: Type-safe data management for projects and profile info.
-- **Motion**: Smooth gallery transitions and micro-animations using **Framer Motion**.
-- **Smart Theme**: Persistent dark/light mode with FOUC (Flash of Unstyled Content) prevention.
-- **Optimized Assets**: CSS masks for theme-aware social icons and local image optimization.
+- **Architecture Astro 5** : Performance statique maximale avec rendu optimisé.
+- **Système de Thème Avancé** : Transition fluide (Circular Reveal) via l'API **View Transitions** avec persistance du choix utilisateur.
+- **Design System** : Utilisation de tokens CSS centralisés (`tokens.css`) pour une gestion cohérente des couleurs et espacements.
+- **Content-First** : Gestion des projets et du profil entièrement via des fichiers **JSON typés** (Astro Content Collections).
+- **Asset Optimization** : Auto-hébergement des polices (@fontsource) et icônes (SVG masks) pour une confidentialité et une vitesse optimales.
 
-## Tech Stack
+## 🛠 Tech Stack
 
-- **Framework**: [Astro](https://astro.build/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Interactions**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: Self-hosted SVGs in `public/icons/` (Simple Icons + custom) used via CSS masks.
-- **Typography**: Outfit & IBM Plex Mono (Self-hosted via @fontsource).
+- **Framework** : [Astro 5](https://astro.build/)
+- **Styling** : [Tailwind CSS](https://tailwindcss.com/) & Vanilla CSS (Style Queries).
+- **Typographie** : Outfit & IBM Plex Mono.
+- **Linters** : ESLint (Flat Config), Stylelint, Markdownlint.
+- **Qualité** : Prettier, Husky, Commitlint, Gitleaks.
 
-## Project Structure
+## 💎 Workflow de Développement (Pro)
+
+Le projet intègre une "Quality Gate" automatisée pour garantir la cohérence du code :
+
+- **Git Hooks (Husky)** :
+  - **Pre-commit** : Exécute `lint-staged` pour formater et linter uniquement les fichiers modifiés.
+  - **Commit-msg** : Force le respect des [Conventional Commits](https://www.conventionalcommits.org/).
+- **Linting Multi-couches** :
+  - **JS/Astro** : ESLint avec support TypeScript.
+  - **CSS** : Stylelint pour la validation des variables et règles Tailwind.
+  - **JSON** : ESLint JSONC pour le tri automatique des clés et la validation syntaxique.
+  - **Markdown** : Markdownlint pour une documentation impeccable.
+- **Sécurité** : Intégration de **Gitleaks** dans le workflow pour prévenir l'exposition de secrets.
+
+## 💻 Commandes
+
+| Commande       | Action                                       |
+| :------------- | :------------------------------------------- |
+| `pnpm install` | Installe les dépendances                     |
+| `pnpm dev`     | Lance le serveur de dev sur `localhost:4321` |
+| `pnpm lint`    | Exécute la suite complète de linting (QA)    |
+| `pnpm format`  | Formate l'ensemble du projet avec Prettier   |
+| `pnpm build`   | Génère le site statique pour la production   |
+
+## 📁 Structure du Projet
 
 ```text
 src/
-├── components/     # Astro & React components
-├── content/        # Data collections (projects, user)
-├── context/        # Theme state management
-├── layouts/        # Base HTML layout
-├── pages/          # File-based routing
-└── styles/         # Design tokens & global CSS
+├── assets/         # Images et médias optimisés
+├── components/     # Composants Astro réutilisables
+├── content/        # Données JSON (projets, profil)
+├── layouts/        # Layout principal et logique de thème
+├── pages/          # Routes du site
+└── styles/         # Design tokens et CSS global
 ```
-
-## Commands
-
-| Command        | Action                                       |
-| :------------- | :------------------------------------------- |
-| `pnpm install` | Install dependencies                         |
-| `pnpm dev`     | Start development server at `localhost:5173` |
-| `pnpm build`   | Build for production                         |
-| `pnpm preview` | Preview production build                     |
-
-## Content Management
-
-The site is data-driven. To update content:
-
-- **Projects**: Edit or add JSON files in `src/content/projects/`.
-- **Profile**: Edit `src/content/user/profile.json`.
-- **Images**: Place project images in `src/assets/projects/` and reference them in JSON files (e.g., `../../assets/projects/image.webp`).
-- **Icons**: Add new technology icons to `public/icons/` if missing.
 
 ---
 
-Built by [Nicolas Genty](https://github.com/nicgen)
+Fait avec ❤️ par [Nicolas Genty](https://github.com/nicgen)
