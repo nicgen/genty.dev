@@ -1,0 +1,45 @@
+{
+  "category": "dev only",
+  "description": "AssoLink est un réseau social de niche dédié aux associations locales, TPE et PME, conçu pour gérer un afflux de moins de 10 000 utilisateurs actifs. Ce projet se démarque par des engagements forts en matière de sobriété numérique (RGESN), avec un budget d'empreinte carbone strict de moins de 0,3 gCO2eq par visite, et en matière d'accessibilité (RGAA AAA) pour garantir son utilisation par les personnes en situation de handicap. Il propose des fonctionnalités interactives comme la publication de posts, des notifications et une messagerie instantanée en temps réel. L'application garantit la souveraineté des données en conservant tout l'hébergement en France ou en Union Européenne, avec une base technique robuste développée en architecture hexagonale.",
+  "id": "assolink",
+  "images": ["../../assets/projects/assolink/thumbnail.jpg"],
+  "links": [
+    {
+      "icon": "github",
+      "type": "github",
+      "url": "https://github.com/nicgen/void-core"
+    }
+  ],
+  "status": "wip",
+  "tech": [
+    {
+      "icon": "nextdotjs",
+      "name": "Next.js"
+    },
+    {
+      "icon": "tailwindcss",
+      "name": "Tailwind CSS"
+    },
+    {
+      "icon": "go",
+      "name": "Go"
+    },
+    {
+      "icon": "sqlite",
+      "name": "SQLite"
+    },
+    {
+      "icon": "sonarqubecloud",
+      "name": "SonarQube Cloud"
+    },
+    {
+      "icon": "github",
+      "name": "GitHub"
+    },
+    {
+      "icon": "pandoc",
+      "name": "Pandoc"
+    }
+  ],
+  "title": "AssoLink (également référencé sous le nom de code interne Komunumo)"
+}

@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+
+const { project } = Astro.props;
+
+const getIconSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '');
+---
+
+<div
+  class="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-surface-container-low"
+>
+  <div
+    class="border-outline-variant/30 mb-6 aspect-video overflow-hidden rounded-sm border bg-surface-container"
+  >
+    <Image
+      src={project.data.images[0]}
+      alt={project.data.title}
+      width={800}
+      height={450}
+      quality={85}
+      format="webp"
+      class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+    />
+  </div>
+  <h3
+    class="mb-3 font-headline text-xl font-bold uppercase transition-colors group-hover:text-primary"
+  >
+    {project.data.title}
+  </h3>
+  <p class="flex-grow font-mono text-sm leading-relaxed opacity-60">
+    {project.data.description}
+  </p>
+  <div class="mt-8 flex flex-wrap gap-2">
+    {
+      project.data.tech.map((t) => (
+        <span class="flex items-center gap-2 rounded-tag bg-outline-variant px-2 py-1 font-mono text-[10px] uppercase text-on-surface">
+          <div
+            class="icon-mask h-4 w-4 bg-primary"
+            style={`-webkit-mask-image: url(/icons/${getIconSlug(t.icon)}.svg); mask-image: url(/icons/${getIconSlug(t.icon)}.svg);`}
+          />
+          {t.name}
+        </span>
+      ))
+    }
+  </div>
+</div>

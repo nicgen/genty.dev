@@ -1,0 +1,38 @@
+---
+import ThemedToggle from './ThemedToggle.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="bg-surface/80 fixed left-0 top-0 z-50 w-full backdrop-blur-md">
+  <div class="mx-auto flex w-full max-w-[1440px] items-center justify-between px-8 py-6">
+    <a href="/" class="group flex flex-col md:flex-row md:items-baseline md:gap-3">
+      <span
+        class="font-headline text-xl font-bold uppercase tracking-tighter transition-colors group-hover:text-primary"
+      >
+        Nicolas GENTY
+      </span>
+      <span
+        class="font-mono text-[0.625rem] uppercase tracking-widest opacity-60 transition-opacity group-hover:opacity-100"
+      >
+        Web Designer / Full-Stack Developer
+      </span>
+    </a>
+    <nav class="flex items-center gap-8">
+      <a
+        href="/"
+        class={`font-mono uppercase tracking-[0.1em] text-[0.875rem] transition-colors duration-200 ${currentPath === '/' ? 'text-primary font-bold' : 'hover:text-primary'}`}
+      >
+        Works
+      </a>
+      <a
+        href="/about"
+        class={`font-mono uppercase tracking-[0.1em] text-[0.875rem] transition-colors duration-200 ${currentPath === '/about' ? 'text-primary font-bold' : 'hover:text-primary'}`}
+      >
+        About
+      </a>
+
+      <ThemedToggle />
+    </nav>
+  </div>
+</header>

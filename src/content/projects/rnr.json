@@ -1,0 +1,41 @@
+{
+  "category": "design & dev",
+  "description": "Audit technique et refonte complète de l'écosystème digital du club professionnel. L'objectif était d'assainir l'infrastructure obsolète, d'améliorer radicalement les performances web en supprimant les constructeurs de pages lourds, et de développer une solution pérenne. Le projet inclut la création d'un thème exclusif et de plugins métiers permettant notamment d'automatiser les classements et calendriers sportifs via l'API de la fédération.",
+  "id": "rnr",
+  "images": ["../../assets/projects/nexus/linkedin_post.webp"],
+  "links": [
+    {
+      "icon": "world",
+      "type": "site",
+      "url": "https://rouennormandierugby.fr/"
+    }
+  ],
+  "status": "completed",
+  "tech": [
+    {
+      "icon": "php",
+      "name": "PHP"
+    },
+    {
+      "icon": "wordpress",
+      "name": "WordPress"
+    },
+    {
+      "icon": "react",
+      "name": "React"
+    },
+    {
+      "icon": "vite",
+      "name": "Vite"
+    },
+    {
+      "icon": "docker",
+      "name": "Docker"
+    },
+    {
+      "icon": "ovh",
+      "name": "server management"
+    }
+  ],
+  "title": "Refonte du Site Officiel du Rouen Normandie Rugby (RNR)"
+}

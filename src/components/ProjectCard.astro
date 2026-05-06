@@ -1,0 +1,61 @@
+---
+import Gallery from './Gallery.astro';
+
+const { project } = Astro.props;
+
+const getIconSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '');
+---
+
+<div class="mb-48 flex flex-col-reverse items-start gap-12 md:flex-row">
+  {/* Project Info */}
+  <div class="flex w-full flex-col gap-4 md:sticky md:top-32 md:w-1/3">
+    <div class="flex items-baseline gap-4">
+      <h3 class="font-headline text-3xl font-bold uppercase tracking-tighter">
+        {project.data.title}
+      </h3>
+    </div>
+    <div class="max-w-sm space-y-4">
+      <p class="font-mono text-[0.875rem] leading-relaxed opacity-70">
+        {project.data.description}
+      </p>
+
+      <div class="flex flex-wrap gap-2 pt-4">
+        {
+          project.data.tech.map((t) => (
+            <span class="flex items-center gap-2 rounded-tag bg-outline-variant px-3 py-1 font-mono text-[0.6875rem] uppercase tracking-widest text-on-surface">
+              <div
+                class="icon-mask h-4 w-4 bg-primary"
+                style={`-webkit-mask-image: url(/icons/${getIconSlug(t.icon)}.svg); mask-image: url(/icons/${getIconSlug(t.icon)}.svg);`}
+              />
+              {t.name}
+            </span>
+          ))
+        }
+      </div>
+
+      <div class="flex gap-6 pt-8">
+        {
+          project.data.links.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 font-mono text-xs font-bold uppercase tracking-widest text-primary transition-transform hover:translate-x-2"
+            >
+              <div
+                class="icon-mask h-4 w-4 bg-primary"
+                style={`-webkit-mask-image: url(/icons/${link.icon === 'world' ? 'googlechrome' : getIconSlug(link.icon)}.svg); mask-image: url(/icons/${link.icon === 'world' ? 'googlechrome' : getIconSlug(link.icon)}.svg);`}
+              />
+              {link.type === 'site' ? 'www' : 'github'}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  {/* Gallery */}
+  <div class="w-full md:w-2/3">
+    <Gallery images={project.data.images} title={project.data.title} />
+  </div>
+</div>

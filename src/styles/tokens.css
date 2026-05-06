@@ -1,0 +1,47 @@
+:root {
+  --theme: light;
+
+  /* Colors */
+  --primary: #eb0202; /* Vibrant Red for Light Mode */
+  --on-primary: #fff;
+  --surface: #fff;
+  --on-surface: #131313;
+  --surface-container-lowest: #fff;
+  --surface-container-low: #f8f8ff;
+  --surface-container: #f1f1f1;
+  --surface-container-high: #ebebeb;
+  --surface-container-highest: #e2e2e2;
+  --outline-variant: rgb(231 231 231);
+
+  /* Spacing */
+  --header-height: 80px;
+  --border-radius-tag: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme: dark;
+  }
+}
+
+[data-theme='light'] {
+  --theme: light;
+}
+
+[data-theme='dark'] {
+  --theme: dark;
+}
+
+.dark {
+  --theme: dark;
+  --primary: #bcfd49; /* Vibrant Acid Green for Dark Mode */
+  --on-primary: #131313;
+  --surface: #131313;
+  --on-surface: #e2e2e2;
+  --surface-container-lowest: #131313;
+  --surface-container-low: #1a1a1a;
+  --surface-container: #242424;
+  --surface-container-high: #2d2d2d;
+  --surface-container-highest: #363636;
+  --outline-variant: #2c2c2c;
+}

@@ -1,0 +1,106 @@
+@import url('./styles/tokens.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Outfit, sans-serif;
+  background-color: var(--surface);
+  color: var(--on-surface);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  container-name: theme;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  padding: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Outfit, sans-serif !important;
+}
+
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Borders */
+.border-custom {
+  border-color: var(--outline-variant);
+}
+
+/* Global Transitions */
+a,
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Icon Mask for theme-aware icons */
+.icon-mask {
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+/* View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 999;
+}
+
+.dark::view-transition-old(root) {
+  z-index: 999;
+}
+
+.dark::view-transition-new(root) {
+  z-index: 1;
+}

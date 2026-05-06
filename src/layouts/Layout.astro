@@ -1,0 +1,131 @@
+---
+import '@fontsource/outfit';
+import '@fontsource/ibm-plex-mono';
+import '../index.css';
+import { getEntry } from 'astro:content';
+import profileImage from '../assets/profil.jpg';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const profile = await getEntry('user', 'profile');
+const siteUrl = 'https://genty.dev';
+
+const {
+  title,
+  description = `${profile.data.name} — ${profile.data.profession}. ${profile.data.bio}`,
+  ogImage = profileImage.src,
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content={profile.data.name} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <script is:inline>
+      const getTheme = () => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return 'system';
+      };
+
+      const setTheme = (theme, skipTransition = true, event = null) => {
+        const root = document.documentElement;
+        const applyTheme = () => {
+          if (theme === 'system') {
+            delete root.dataset.theme;
+            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            root.classList.toggle('dark', isDark);
+          } else {
+            root.dataset.theme = theme;
+            root.classList.toggle('dark', theme === 'dark');
+          }
+          localStorage.setItem('theme', theme);
+          window.dispatchEvent(new CustomEvent('theme-changed', { detail: { theme } }));
+        };
+
+        if (skipTransition || !document.startViewTransition) {
+          applyTheme();
+          return;
+        }
+
+        const transition = document.startViewTransition(applyTheme);
+
+        transition.ready.then(() => {
+          const x = event?.clientX ?? window.innerWidth / 2;
+          const y = event?.clientY ?? window.innerHeight / 2;
+
+          const radius = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+          );
+
+          const isDark = root.classList.contains('dark');
+
+          document.documentElement.animate(
+            {
+              clipPath: isDark
+                ? [`circle(${radius}px at ${x}px ${y}px)`, `circle(0% at ${x}px ${y}px)`]
+                : [`circle(0% at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`],
+            },
+            {
+              duration: 500,
+              easing: 'ease-in-out',
+              pseudoElement: isDark ? '::view-transition-old(root)' : '::view-transition-new(root)',
+            }
+          );
+        });
+      };
+
+      setTheme(getTheme(), true);
+
+      window.updateTheme = setTheme;
+
+      // Listen for system changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        if (getTheme() === 'system') {
+          setTheme('system', true);
+        }
+      });
+    </script>
+  </head>
+  <body
+    class="bg-surface text-on-surface transition-colors duration-300 selection:bg-primary selection:text-on-primary"
+  >
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --header-height: 80px;
+  }
+</style>

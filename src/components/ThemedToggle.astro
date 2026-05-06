@@ -1,0 +1,53 @@
+---
+
+---
+
+<button id="theme-toggle" class="group p-2 transition-colors" aria-label="Toggle theme">
+  <div
+    id="theme-toggle-icon"
+    class="icon-mask h-5 w-5 bg-on-surface transition-all duration-300 group-hover:bg-primary"
+  >
+  </div>
+</button>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  const icon = document.getElementById('theme-toggle-icon');
+  if (!btn || !icon) throw new Error('Theme toggle elements not found');
+
+  const themes = ['light', 'dark'];
+
+  const getTheme = () => {
+    const theme = localStorage.getItem('theme') || 'system';
+    if (theme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return theme;
+  };
+
+  const updateIcon = () => {
+    const currentTheme = getTheme();
+    const iconName = currentTheme === 'light' ? 'sun' : 'moon';
+
+    const iconUrl = `/icons/${iconName}.svg`;
+    icon.style.webkitMaskImage = `url(${iconUrl})`;
+    icon.style.maskImage = `url(${iconUrl})`;
+  };
+
+  updateIcon();
+
+  window.addEventListener('theme-changed', () => {
+    updateIcon();
+  });
+
+  btn.addEventListener('click', (e) => {
+    const currentTheme = getTheme();
+    const currentIndex = themes.indexOf(currentTheme);
+    const nextIndex = (currentIndex + 1) % themes.length;
+    const nextTheme = themes[nextIndex];
+
+    if (window.updateTheme) {
+      window.updateTheme(nextTheme, false, e);
+    }
+  });
+</script>

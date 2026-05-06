@@ -1,0 +1,22 @@
+{
+  "bio": "Building digital interfaces at the intersection of design and code. Focused on minimalism and brutalist aesthetics.",
+  "name": "Nicolas Genty",
+  "profession": "Creative Technologist",
+  "socials": [
+    {
+      "icon": "github",
+      "name": "GitHub",
+      "url": "https://github.com/nicgen"
+    },
+    {
+      "icon": "linkedin",
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/ngenty"
+    },
+    {
+      "icon": "mastodon",
+      "name": "Mastodon",
+      "url": "https://mastodon.social/@nicgen"
+    }
+  ]
+}

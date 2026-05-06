@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import WIPProjectCard from '../components/WIPProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const completedProjects = projects.filter((p) => p.data.status === 'completed');
+const wipProjects = projects.filter((p) => p.data.status === 'wip');
+
+const categories = [...new Set(completedProjects.map((p) => p.data.category))];
+---
+
+<Layout title="Works | Nicolas Genty">
+  <Header />
+
+  <main class="pt-32">
+    <div class="mx-auto max-w-[1440px] px-8 pb-32">
+      {
+        categories.map((category) => (
+          <section class="mb-32">
+            <header class="mb-24 border-b border-outline-variant pb-4">
+              <h2 class="font-mono text-[0.6875rem] uppercase tracking-widest opacity-60">
+                ( {category} )
+              </h2>
+            </header>
+
+            <div class="space-y-32">
+              {completedProjects
+                .filter((p) => p.data.category === category)
+                .map((project) => (
+                  <ProjectCard project={project} />
+                ))}
+            </div>
+          </section>
+        ))
+      }
+
+      {
+        wipProjects.length > 0 && (
+          <section class="mt-48">
+            <header class="mb-16 border-b border-outline-variant pb-4">
+              <h2 class="font-mono text-[0.6875rem] uppercase tracking-widest opacity-60">
+                ( work in progress )
+              </h2>
+            </header>
+
+            <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+              {wipProjects.map((project) => (
+                <WIPProjectCard project={project} />
+              ))}
+            </div>
+          </section>
+        )
+      }
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

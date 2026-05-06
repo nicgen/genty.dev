@@ -1,0 +1,39 @@
+---
+import { getEntry } from 'astro:content';
+
+const profile = await getEntry('user', 'profile');
+const { name, socials } = profile.data;
+---
+
+<footer class="w-full border-t border-outline-variant bg-surface-container-lowest pb-8 pt-16">
+  <div
+    class="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-between gap-4 px-8 py-12 md:flex-row"
+  >
+    <div class="font-mono text-sm font-bold">
+      © {new Date().getFullYear()}
+      {name.toUpperCase()}
+    </div>
+    <div class="flex items-center gap-8 font-mono text-[0.6875rem] uppercase tracking-widest">
+      {
+        socials.slice(0, 2).map((social) => (
+          <a
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="opacity-60 transition-all hover:text-primary hover:opacity-100"
+          >
+            {social.name}
+          </a>
+        ))
+      }
+      <a
+        href="https://github.com/nicgen/genty.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-primary underline underline-offset-4"
+      >
+        Source
+      </a>
+    </div>
+  </div>
+</footer>
